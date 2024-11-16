@@ -1,0 +1,82 @@
+<html>
+    <style>
+        body {
+            background-color: #156082;
+        }
+        
+        div {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            vertical-align: top;
+            color: white;
+        }   
+
+        input {
+          border: 2px solid "#52B6E3";
+          outline: none;
+          border-radius: 12px;
+          display: inline;
+          text-align: left;   
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%); /* Moves it back by 50% of its own width */
+          font-size: clamp(1rem, 2vw + 0.5rem, 3rem);
+          background-color: green;
+          padding: 13% 25%;
+        }
+
+        h1 {
+            text-align: left;
+            vertical-align: top;
+            padding-top: 1%;
+            padding-bottom: 3%;
+        }
+
+        button {
+            background-color: #82DDED;
+            font-size: 200%;
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: 2px solid #0085CC;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            cursor: pointer;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+
+    </style>
+</html>
+
+
+<body style = "margin-left: 0px; margin-right: 0px">
+
+    <div id="IA" >
+        <h1>Input answer #{{numOfQ}}</h1> 
+    </div>
+
+    <div *ngIf="errorMessage" style="color: black; font-size: 32px;">
+        {{errorMessage}}
+    </div>
+
+    <div id = "Q" >
+
+    <h1 style = "color: black; font-size:clamp(1rem, 3vw + 1rem, 4rem); padding-bottom: 1%;">{{q}}</h1>
+    </div>
+
+    <div style="padding-bottom: 4%;">
+        <input (keydown.enter)="logQuestion($event)" id="A" type="text" [(ngModel)]="answer1">
+    </div>
+   
+    <div>
+        <button (click)="logQuestionB()"> Submit </button>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    
+</body>
+

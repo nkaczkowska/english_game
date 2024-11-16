@@ -1,0 +1,135 @@
+<html>
+    <style>
+        body {
+            background-color: #156082;
+        }
+
+        h1 {
+            text-align: left;
+            vertical-align: top; /*delete*/
+            padding-top: 1%;
+            padding-bottom: 3%;
+        }
+        
+        div {
+            font-size: 32px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            vertical-align: top; /*delete*/
+            color: white;
+        }   
+
+        /* Each row: (input -> arrow -> input) */
+        .input-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px; /* Small gap between inputs and arrow */
+            margin: 20px 0;
+        }
+
+        .input-row input {
+            padding: 40px; 
+            border: 2px solid black;
+            outline: none;
+            border-radius: 12px;
+            font-size: 100%;
+            width: 50%; /* Inputs take 40% each, leaving space for the arrow */
+            max-width: 300px;
+            text-align: left;
+        }
+
+        .arrow {
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            display: inline-block;
+            padding: 6px;
+            transform: rotate(-45deg); /*Right-pointing arrow */
+        }
+
+        button {
+            background-color: #82DDED;
+            font-size: 100%;
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: 2px solid #0085CC;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            cursor: pointer;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }        
+
+        .button:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+
+
+ /* Responsive layout adjustments */
+ @media (max-width: 600px) {
+            .input-row {
+                flex-direction: column; /* Stack inputs and arrow vertically */
+                align-items: flex-start;
+                padding-bottom: 70px;
+
+            }
+            .arrow {
+                transform: rotate(45deg); /* Downward-pointing arrow */
+                margin: 5px 32%; /* Adds spacing for vertical layout */
+            }
+        }
+
+
+    </style>
+</html>
+
+
+<body style = "margin-left: 0px; margin-right: 0px">
+
+
+    
+    <div id="IA" >
+        <h1>Input answer #{{numOfQ}}</h1> 
+        <!-- zrób tak, aby nachodziło na ten popredni napis (pokrywało się z nim)-->
+    </div>
+    
+    
+    <div *ngIf="errorMessage" style="color: black">
+        {{errorMessage}}
+    </div>
+
+
+    <div id = "Q">
+        <h1  style="color: black; font-size: clamp(1rem, 3vw + 1rem, 4rem); padding-bottom: 1%;">{{q}}</h1>
+    </div>
+
+
+
+    <!--ngModel binds the input fields to variables-->
+<div class="input-row">
+    <input  id="A1" type="text"  [(ngModel)]="answer1">
+    <i class="arrow"></i>
+    <input  id="A2" type="text"  [(ngModel)]="mAnswer1">
+</div>
+
+<div class="input-row">
+    <input  id="A3" type="text"  [(ngModel)]="answer2">
+    <i class="arrow" ></i>
+    <input  id="A4" type="text"  [(ngModel)]="mAnswer2">
+</div>
+
+<div class="input-row">
+    <input  id="A5" type="text"  [(ngModel)]="answer3">
+    <i class="arrow" ></i>
+    <input  id="A6" type="text"  [(ngModel)]="mAnswer3">
+</div>
+
+
+<div>
+    <button (click)="logQuestion()"> Submit </button>
+</div>
+
+
+</body>
+

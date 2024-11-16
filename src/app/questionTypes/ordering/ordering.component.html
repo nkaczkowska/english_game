@@ -1,0 +1,113 @@
+<html>
+    <style>
+        body {
+            background-color: #156082;
+        }
+        
+        h1 {
+            text-align: left;
+            vertical-align: top;
+            padding-top: 1%;
+            padding-bottom: 3%;
+        }
+
+        div {
+            font-size: 32px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            vertical-align: top;
+            color: white;
+        }   
+        
+
+        /* Flex container styling for responsive input layout */
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between inputs */
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .input-container input {
+            padding: 60px 20px; /* Reduced padding for responsive design */
+            border: 2px solid black;
+            outline: none;
+            border-radius: 12px;
+            font-size: 100%; /* Responsive font size */
+            width: 90%; /* Sets each input box to 40% of the row, keeping space between them */
+            max-width: 450px; /* Optional max width */
+            text-align: left;
+        }
+
+
+        button {
+            background-color: #82DDED;
+            font-size: 100%;
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: 2px solid #0085CC;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            cursor: pointer;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+
+        }
+        .button:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+
+
+
+
+    </style>
+</html>
+
+
+<body style = "margin-left: 0px; margin-right: 0px">
+
+    
+    <div id="IA" >
+        <h1>Input answer #{{numOfQ}}</h1> 
+        <!-- zrób tak, aby nachodziło na ten popredni napis (pokrywało się z nim)-->
+    </div>
+
+
+    
+    
+    <div *ngIf="errorMessage" style="color: black">
+        {{errorMessage}}
+    </div>
+
+
+    <div id = "Q">
+        <h1 style="color: black; font-size: clamp(1rem, 3vw + 1rem, 4rem); padding-bottom: 1%;">{{q}}</h1>
+    </div>
+
+
+    <div class="input-container">
+        <div>
+            <h1>1.</h1>
+            <input id="A1" type="text"  [(ngModel)]="answer1">
+        </div>
+        <div>
+            <h1>2.</h1>
+            <input id="A2" type="text" [(ngModel)]="answer2">
+        </div>
+        <div>
+            <h1>3.</h1>
+            <input id="A3" type="text" [(ngModel)]="answer3">
+        </div>
+    </div>
+
+
+    <div>
+        <button (click)="logQuestion()"> Submit </button>
+    </div>
+
+
+</body>
+
+

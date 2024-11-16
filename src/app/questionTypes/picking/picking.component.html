@@ -1,0 +1,90 @@
+<html>
+    <style>
+        body {
+            background-color: #156082;
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            font-size: 32px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: white;
+            padding: 8px 10px;
+        }
+
+        h1 {
+            text-align: left;
+            vertical-align: top;
+            padding-top: 1%;
+            padding-bottom: 3%;
+        }
+
+        /* Flex container styling for responsive input layout */
+        .input-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px; /* Space between inputs */
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .input-container input {
+            padding: 60px 20px; /* Reduced padding for responsive design */
+            border: 2px solid black;
+            outline: none;
+            border-radius: 12px;
+            font-size: 100%; /* Responsive font size */
+            width: 45%; /* Sets each input box to 45% of the row, keeping space between them */
+            max-width: 450px; /* Optional max width */
+            text-align: left;
+        }
+
+        /* Styling for the button */
+        button {
+            background-color: #82DDED;
+            font-size: 100%;
+            padding: 15px 30px;
+            border-radius: 12px;
+            border: 2px solid #0085CC;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            cursor: pointer;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .button:hover {
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+    </style>
+</html>
+
+<body>
+
+    <div id="IA">
+        <h1>Input answer #{{numOfQ}}</h1> 
+    </div>
+
+    
+    <div *ngIf="errorMessage" style="color: black">
+        {{errorMessage}}
+    </div>
+
+    <div id="Q">
+        <h1 style = "color: black; font-size:clamp(1rem, 3vw + 1rem, 4rem); padding-bottom: 1%;">{{q}}</h1>
+    </div>
+
+    <!-- Responsive input layout -->
+    <div class="input-container">
+        <input id="A1" type="text" style="background-color: green;" [(ngModel)]="answer1">
+        <input id="A2" type="text" style="background-color: red;" [(ngModel)]="answer2">
+        <input id="A3" type="text" style="background-color: red;" [(ngModel)]="answer3">
+        <input id="A4" type="text" style="background-color: red;" [(ngModel)]="answer4">
+    </div>
+
+    <div>
+        <button (click)="logQuestion()"> Submit </button>
+    </div>
+</body>

@@ -1,0 +1,56 @@
+<style>
+div {
+    padding: 2vh, 0;
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+
+  .button {
+  font-size: clamp(1.5rem, 2vw + 1rem, 3rem); /* makes the font size responsive */
+  padding: clamp(1rem, 2vw + 0.5rem, 3rem) clamp(2rem, 5vw + 1rem, 6rem); /* responsive padding */
+  border-radius: 12px;
+  border: 2px solid;
+  color: white;
+  position: absolute;
+  margin-top: clamp(3rem, 2vh + 4rem, 10rem);
+  cursor: pointer;
+  background-color: #82DDED;
+  border-color: #0085CC;
+  cursor: pointer;
+
+}
+
+  h1{
+    font-size: clamp(1rem, 3vw + 1rem, 4rem);
+    padding-top: clamp(8rem, 6vh + 0.5rem, 22rem);      
+  }
+
+  body{
+    min-height: 400px;
+    min-width: 300px;
+  }
+
+  .button1:hover, .button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+
+</style>
+
+
+<body style = "background-color: #156082; margin-left: 0px; margin-right: 0px">
+    <div>
+        
+        <h1>Question added! Dou You wish to
+            <br> write another question?</h1>
+    </div>
+
+
+    <div>
+        <button (click) = "clickYes()" style = "left: 10%" class = "button"> Yes </button>
+    </div>
+
+    <div>
+        <button (click) = "clickNo()" style = "left: 50%; margin-right: 10%;" class = "button"> No, I want to finish the set </button>
+    </div>
+    
+</body>
