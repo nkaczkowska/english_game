@@ -98,6 +98,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/english-game",
+            "netlifyToken": "nfp_PFActvRWa5Uu5nGH18pGmwfQs1qXyPeAbc8c",
+            "siteId": "38bf5abf-ee74-4ec1-8522-95637f172d00"
+          }
         }
       }
     },
