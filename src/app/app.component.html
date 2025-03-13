@@ -48,17 +48,19 @@
 
 <body style = "background-color: #542966;">
   
+  <app-info-button message="This is a learning game with user-input questions. If You wish to add a new category of questions, please click on the 'Enter Questions' button. If You wish to practice answering questions from the previously generated categoreis, please click the 'Play' button."></app-info-button>
+
   <div id = "welcomeSign">
     <h1>Hi, welcome to the game!</h1>
   </div>
 
 
-  <div id = "button1">
-    <button (click)="clickButton1()"class="button1">Play</button>
+  <div>
+    <button id="button1" (click)="navigateToPickCat(); clickButton1()"class="button1">Play</button>
   </div>
 
-  <div id = "button2">
-    <button (click)="navigateToPasswordInput(); clickButton2()" class = "button2" >Enter Questions</button>
+  <div>
+    <button id="button2"(click)="navigateToPasswordInput(); clickButton2()" class = "button2" >Enter Questions</button>
   </div>
   <router-outlet></router-outlet>
 

@@ -1,10 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { InfoButtonComponent } from 'app/info-button/info-button.component';
 
 @Component({
   selector: 'app-password-input',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [InfoButtonComponent],
   templateUrl: './password-input.component.html',
   styleUrl: './password-input.component.html'
 })
@@ -13,28 +14,18 @@ export class PasswordInputComponent {
 
   constructor(private router: Router, private renderer: Renderer2) { } //this Renderer2 allows me to safely manipulate the DOM elements
 
-  password = "share";
-
-
-
+  private password = "share";
 
   checkPassword(value: string){
     let sign = document.getElementById("IP");
-
     if(value == this.password){
-
       this.navigateToCreateCat();
-      //make it route to a new component, input category name, where it would also change the sign, and also take the input and store it (rn only print it on console)
-
     }
     else{
-
       if(sign != null){
         sign.innerHTML = '<h1 style ="font-size: clamp(2rem, 3vw + 2rem, 4rem); padding-top: clamp(2rem, 5vh + 2rem, 10rem)" >Incorrect password. Try again: </h1>';
       }
-
-    }
-    
+    } 
   }
 
   

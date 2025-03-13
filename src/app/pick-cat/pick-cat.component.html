@@ -1,0 +1,182 @@
+<style>
+    div {
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        vertical-align: top;
+    }
+    
+      h1{
+        font-size: clamp(2rem, 3vw + 1rem, 4rem);
+        text-align: left;
+        padding-top: clamp(1rem, 5vh + 0.5rem, 5rem);
+      }
+    
+      body{
+        min-height: 400px;
+        min-width: 300px;
+        margin: 0;
+        background-color: #FC834A;
+      }
+
+     .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center; /* centers buttons horizontally */
+      gap: 2rem; 
+     }
+
+      button{
+        display: inline-block;
+        font-size: 2.5rem; /*base font size*/
+        width: 15rem; /*defined button width, so that all buttons are of the same size*/
+        height: 20rem; /*defined button height, so that all buttons are of the same size*/
+        text-align: center;
+        border-radius: 12px;
+        border: 2px solid;
+        color: white;
+        cursor: pointer;
+        padding: 1rem 1rem;
+        overflow: hidden; /* ensures that text doesn't overflow */
+        white-space: nowrap;  /* prevents word breaks */
+        text-wrap: initial;
+      }
+
+      .unplayed {
+        background-color: #FB590E;
+        border-color: #ee6d31;
+      }
+
+      .played{
+        background-color: #929292;
+        border-color: #606060;
+      }
+
+      .won{
+        background-color: green;
+        border-color: darkgreen;
+      }
+
+      button span {
+      display: inline-block;
+      font-size: calc(12px + (14rem / var(--text-length))); /* dynamically scales font */
+      max-width: 100%; /* ensures no overflow */
+    }
+
+    .category-container {
+  position: relative;
+  display: inline-block;
+    }
+
+    .delete-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+    .button:hover {
+      box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+
+        .delete-button:hover {
+          box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+ 
+    
+    </style>
+
+
+<html>
+<body>
+  <app-info-button message="Please choose one of the categories You want to play."></app-info-button>
+  
+    <div>
+        <h1 style="padding-left: 3%; padding-bottom: 2%;">Categories</h1>
+
+        <div style="text-align: right; padding-right: 2%; padding-bottom: 1%;">
+        <button
+            class="button"
+            style="background-color: #542966; color: white; width: 22rem; height: 5rem; font-size: 1.5rem;  align-items: center;" [disabled]="!canPlayVideo" (click)="showVideo()"> Crowns collected: {{ this.totalNumOfTriesForAll }}
+            <img src='assets/crownImg.webp' alt="Icon" style="width: 40px; height: 40px; margin-right: 8px;" />
+        </button>
+      </div>
+
+
+      <div *ngIf="isVideoVisible" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); display: flex; justify-content: center; align-items: center;">
+        <div style="position: relative; width: 80%; max-width: 640px;">
+          <video
+            [src]="videoSrc"
+            width="100%"
+            controls
+            autoplay
+          ></video>
+
+
+          <button
+            class="delete-button"
+            (click)="closeVideo()"
+          >
+            x
+          </button>
+        </div>
+      </div>
+
+
+
+        <div *ngIf="isRemoveMode == false" style="text-align: right; padding-right: 2%;">
+          <button class="button" style="background-color: rgb(188, 2, 2); color: white; width: 18rem; height: 5rem; font-size: 1.5rem;" (click)="enableRemoveMode()">
+            Remove Categories
+          </button>
+        </div>
+
+        <div *ngIf="isRemoveMode" style="text-align: right; padding-right: 2%;">
+          <button class="button" style="background-color: rgba(107, 188, 2, 0.863); border-color:rgba(65, 115, 0, 0.863); color: white; width: 22rem; height: 5rem; font-size: 1.5rem;" (click)="disableRemoveMode()">
+            Stop Removing Categories
+          </button>
+        </div>
+
+
+        <div style="padding: 1rem 3%;">
+          <input type="text" [(ngModel)]="searchQuery" (input)="filterCategories()" placeholder="Search categories..." style="width: 100%; padding: 0.5rem; font-size: 1.5rem;"/>                                  
+        </div>
+        
+        <div class="button-container" *ngIf="!isVideoVisible">
+          <div class="category-container" *ngFor="let category of filteredCategories"> 
+          
+            <button class="button" 
+            [ngClass]="{
+              'unplayed': category.totalNumOfTries === 0,
+              'played': category.totalNumOfTries > 0 && category.isWon === 0,
+              'won': category.isWon === 1,
+            }"
+            [style.--text-length]="category.name.length"
+            (click)="displayQuestionsFromCat(category?.name)">
+            <span>{{ category?.name }}</span>
+            </button>
+
+            <button *ngIf="isRemoveMode" class="delete-button" (click)="deleteCategory(category.id)"> x </button>
+          </div> 
+        </div>
+      </div>
+
+
+    
+      <!--Tasks for future me:
+        16. rysunki na storyline       
+        26. avatar?
+        -->
+      
+      
+</body>
+</html>
+

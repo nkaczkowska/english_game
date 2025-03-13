@@ -1,0 +1,81 @@
+<style>
+    div {
+        padding: 2vh, 0;
+        text-align: center;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      }
+    
+      .button {
+      font-size: clamp(1.5rem, 2vw + 1rem, 3rem); /* makes the font size responsive */
+      padding: clamp(1rem, 2vw + 0.5rem, 3rem) clamp(2rem, 5vw + 1rem, 6rem); /* responsive padding */
+      border-radius: 12px;
+      border: 2px solid;
+      color: white;
+      margin-top: clamp(3rem, 2vh + 4rem, 10rem);
+      cursor: pointer;
+      background-color: #FB590E;
+      border-color:  #ee6d31;    
+    }
+    
+      h1{
+        font-size: clamp(0.5rem, 2vw + 0.5rem, 3rem);
+        padding-top: clamp(4rem, 4vh + 0.5rem, 18rem);
+        margin-left: 4vw;
+        margin-right: 4vw;      
+      }
+
+      h2{
+        font-size: clamp(1rem, 2vw + 0.5rem, 3rem)
+      }
+    
+      body{
+        min-height: 400px;
+        min-width: 300px;
+      }
+    
+
+      .game-won-image {
+        width: 40%; 
+        margin-top: 1 vh;
+        display: block; 
+        margin: 0 auto; 
+      }
+
+      .button1:hover, .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
+    
+    </style>
+    
+    
+    <body style = "background-color: #542966; margin-left: 0px; margin-right: 0px">
+
+      <app-info-button message="Congratulations, you've completed all the questions correctly!"></app-info-button>
+
+        <div>
+            
+            <h1>Congratulations!
+                <br>By answering all the questions correctly you've helped the Queen find her missing crown!
+                <br>You've practiced the category: </h1>
+                <br> <h1 *ngIf="numOfTries === 1" style="padding-top: clamp(1rem, 2vh + 0.5rem, 5rem)"> {{numOfTries}} time </h1>
+                <br> <h1 *ngIf="numOfTries > 1" style="padding-top: clamp(1rem, 2vh + 0.5rem, 5rem)"> {{numOfTries}} times </h1>
+
+
+
+                <div class="image-container">
+                    <img src={{imgSrc}} alt="Game Won" class="game-won-image"/>
+                </div>
+
+
+                <h2> Please click 'continue'</h2>
+        </div>
+    
+    
+        <div>
+            <button (click) = "navigateToPickCat()"class = "button"> Continue </button>
+        </div>
+    
+        
+    </body>
+

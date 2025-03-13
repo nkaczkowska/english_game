@@ -73,11 +73,19 @@
 
 
 <body style = "margin-left: 0px; margin-right: 0px">
+    
+    <app-info-button message="Creating a question. Please input the contents of Your question into the input box. Please note that the question can be in one of 4 types. Writing: requires one answer; the player has to typeit into an input box. Picking: requires four answers, one of which is correct; the player has to pick the correct one out of the four. Matching: requires three pairs of answers; the player has to match each answer to its corresponding pair. Ordering: requires three answers, which lave some logical order; the player has to arrange them in the expected order, from 1 to 3."></app-info-button>
+
 
 <div id="IQ">
     <h1 style = "text-align: left;">Input question #{{numQ}}</h1> 
-    <h1 style="text-align: right; padding-top: 40px; font-size: clamp(0.5rem, 2vw + 1rem, 3rem)">Category:     </h1>
+    <h1 style="text-align: right; padding-top: 40px; font-size: clamp(0.5rem, 2vw + 1rem, 3rem)">Category: {{currentCat}}</h1>
 </div>
+
+<div *ngIf="errorMessage" style="color: black; height: auto; padding: 8px 10px; font-size: 32px;">
+    {{errorMessage}}
+</div>
+
 
 <input id="Q" type="text" #question>
 

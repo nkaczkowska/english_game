@@ -1,33 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
-
+import { CategoryService } from '../category.service';
+import { NgIf } from '@angular/common';
+import { SharingService } from 'app/questionTypes/sharing.service';
+import { InfoButtonComponent } from 'app/info-button/info-button.component';
 
 @Component({
   selector: 'app-create-cat',
   standalone: true,
-  imports: [],
+  imports: [NgIf, InfoButtonComponent],
+  providers: [CategoryService],
   templateUrl: './create-cat.component.html',
   styleUrl: './create-cat.component.css'
 })
 export class CreateCatComponent {
 
+errorMessage: string = '';
 
-  constructor(private router: Router) {} 
+  constructor(private router: Router, private categoryService: CategoryService, private sharingService: SharingService) {} 
 
-  ngOnInit(): void {
 
-    let sign = document.getElementById("IP");
-    if(sign != null){
-      sign.innerHTML = '<h1 style = "font-size: 60px; color: white; text-align: center; vertical-align: bottom;"> Category name: </h1>';
-      }
-
-  }
 
   addCat(catName: string): void {
-    //this should check if the cat name already exists in the database
-    console.log(catName)
-    this.navigateToAddQuestions();
-    
+    //checking if there is something in the text box
+    if(!catName){
+      this.errorMessage = 'Please input a name for the category';
+      return;
+    }
+
+    //recording the input category name as the currentCat in the application
+    this.sharingService.setCurrentCat(catName);
+
+    //adding the category name to the database
+    this.categoryService.addCategory(catName).subscribe({
+      next: (response) => {
+        console.log('Category added successfully:', response);
+        this.navigateToAddQuestions();
+      },
+      error: (error) => {
+        console.error('Error adding category:', error);
+        this.errorMessage = 'The category name You are trying to use already exists. Please try using a different category name.';
+      }
+    });    
   }
 
 

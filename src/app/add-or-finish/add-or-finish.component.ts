@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { SharingService } from '../questionTypes/sharing.service';
 import { Router } from '@angular/router';
+import { InfoButtonComponent } from 'app/info-button/info-button.component';
 
 @Component({
   selector: 'app-add-or-finish',
   standalone: true,
-  imports: [],
+  imports: [InfoButtonComponent],
   templateUrl: './add-or-finish.component.html',
   styleUrl: './add-or-finish.component.css'
 })
@@ -25,6 +26,7 @@ export class AddOrFinishComponent implements OnInit {
   }
 
   clickNo(){
+    document.body.style.backgroundColor = '#542966';
     this.shared.daefaultNumQ();
     this.navigateToMainPage();     
   }

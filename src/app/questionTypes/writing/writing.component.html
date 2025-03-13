@@ -52,6 +52,9 @@
 
 <body style = "margin-left: 0px; margin-right: 0px">
 
+
+    <app-info-button message="Adding an answer to a Writing question. Type an answer to the given question. Please note: for the answer to be correct, the player has to write it exactly right, so do not make it long nor complex"></app-info-button>
+
     <div id="IA" >
         <h1>Input answer #{{numOfQ}}</h1> 
     </div>
@@ -66,11 +69,11 @@
     </div>
 
     <div style="padding-bottom: 4%;">
-        <input (keydown.enter)="logQuestion($event)" id="A" type="text" [(ngModel)]="answer1">
+        <input id="A" type="text" [(ngModel)]="answer1">
     </div>
    
     <div>
-        <button (click)="logQuestionB()"> Submit </button>
+        <button (click)="logQuestion()"> Submit </button>
     </div>
 
     <br>

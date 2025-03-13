@@ -8,6 +8,12 @@ import { PickingComponent } from './questionTypes/picking/picking.component';
 import { MatchingComponent } from './questionTypes/matching/matching.component';
 import { OrderingComponent } from './questionTypes/ordering/ordering.component';
 import { AddOrFinishComponent } from './add-or-finish/add-or-finish.component';
+import { PickCatComponent } from './pick-cat/pick-cat.component';
+import { PreGameComponent } from './pre-game/pre-game.component';
+import { StorylineSlideComponent } from './play/storyline-slide/storyline-slide.component';
+import { AnswerQuestionComponent } from './play/answer-question/answer-question.component';
+import { GameOverComponent } from './play/game-over/game-over.component';
+import { GameWonComponent } from './play/game-won/game-won.component';
 
 
 export const routes: Routes = [
@@ -19,7 +25,14 @@ export const routes: Routes = [
   { path: 'add-picking-question', component: PickingComponent }, //route for the writing component
   { path: 'add-matching-question', component: MatchingComponent }, //route for the writing component
   { path: 'add-ordering-question', component: OrderingComponent }, //route for the writing component
-  { path: 'add-or-finish', component: AddOrFinishComponent }, //route for the add-or-finish 
+  { path: 'add-or-finish', component: AddOrFinishComponent }, //route for the add-or-finish component
+  { path: 'pick-category', component: PickCatComponent }, //route for the pick-cat component
+  { path: 'pre-game', component: PreGameComponent }, //route for the pre-game component
+  { path: 'storyline-slide', component: StorylineSlideComponent }, //route for the storyline-slide component
+  { path: 'answer-question', component: AnswerQuestionComponent }, //route for the answer-questions component
+  { path: 'game-over', component: GameOverComponent }, //route for the game-over component
+  { path: 'game-won', component: GameWonComponent } //route for the game-won component
+
 
 ];
 

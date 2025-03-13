@@ -1,27 +1,25 @@
 <style>
+
+  body {
+    background-color: #156082;
+    margin: 0;
+  }
+
   div {
-        height: 200px;
+        height: 170px;
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-        padding: 100px;
-        background-color: "#52B6E3";
-  
+        padding: 80px; 
       }
   
   input {
       padding: calc(2vh + 2vw) calc(6vw + 12px);
-      border: 2px solid "#52B6E3";
       outline: none;
       border-radius: 12px;
-      display: inline;
-      vertical-align: middle;
+      display: block;
       text-align: center;
-      background-color: "#52B6E3";
       width: calc(30vw + 100px); /* Width changes based on viewport width */
       max-width: 80vw; 
-      vertical-align: middle;
       position: relative;
-      left: 50%;
-      transform: translateX(-50%); /* Moves it back by 50% of its own width */
       font-size: clamp(0.75rem, 1.5vw + 0.5rem, 2.5rem);
   }
   
@@ -34,31 +32,63 @@
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', 'sans-serif';
-}
+    display: block;
+  }
+
+  .button:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+      }
+
 
   h1 {
       font-size: clamp(2rem, 3vw + 2rem, 4rem);
       padding-top: clamp(2rem, 5vh + 2rem, 10rem)
   }
   
-  .button:hover {
-        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-      }
-  
+  .error-message {
+    color: black;
+    font-size: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+    margin: 10px auto; 
+    max-width: 80%; 
+    word-wrap: break-word; 
+    line-height: 1.5; 
+    padding: 10px; 
+  }
+
+  .container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 20px; /* Adds spacing between elements */
+
+  }
   </style>
 
-<body style = "background-color: #156082; margin-left: 0px; margin-right: 0px;" >
+<body >
+  
+  <app-info-button message="Creating a category. Please input the name of your new category."></app-info-button>
+
+
     <div id = "CN">
         <h1>Category name:</h1>
     </div> 
 
-    <input (keydown.enter)="addCat(catName.value)" type = "text" #catName>
+
+    <div class="container">
+    <div *ngIf="errorMessage" style="color: black; font-size: clamp(1rem, 3vw, 2rem); padding: 10px; height: 30px; text-align: center; flex-wrap: wrap;">
+      {{errorMessage}}
+    </div>
+
+
+    <input (keydown.enter)="addCat(catName.value)" type="text" #catName>
     <br>
     <br>
     <button (click) = "addCat(catName.value)" class = "button"> Enter </button>
+  </div>
 
 </body>
 

@@ -2,13 +2,15 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';  // Import the routes
-import { OnDestroy, OnInit } from '@angular/core';
-import { AddQuestionsComponent } from './app/add-questions/add-questions.component';
+import { provideHttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { importProvidersFrom } from '@angular/core';
 
 
 bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),  // Provide the routes for the app
-    AddQuestionsComponent
-  ]
-}).catch(err => console.error(err));
+    provideHttpClient(),
+    importProvidersFrom(FormsModule),
+  ],
+});

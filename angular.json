@@ -24,7 +24,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -87,7 +89,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -118,7 +122,9 @@
               {
                 "glob": "**/*",
                 "input": "projects/learning-game/public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "projects/learning-game/src/styles.css"
@@ -181,7 +187,9 @@
               {
                 "glob": "**/*",
                 "input": "projects/learning-game/public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets"
             ],
             "styles": [
               "projects/learning-game/src/styles.css"
